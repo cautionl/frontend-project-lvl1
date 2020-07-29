@@ -21,7 +21,5 @@ jobs:
         uses: actions/setup-node@v1
       - name: npm install
         run: make install
-      - name: install_eslint
-        run: npm install eslint eslint-config-airbnb-base eslint-plugin-import
       - name: eslint
         run: make lint
