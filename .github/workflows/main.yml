@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: nodejs
-        run: install nodejs
+        run: apt install nodejs
       - name: my_repo
         uses: actions/checkout@v1
       - name: eslint
