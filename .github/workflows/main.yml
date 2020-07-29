@@ -15,9 +15,9 @@ jobs:
   eslint:
     runs-on: ubuntu-latest
     steps:
-      - name: npm install
-        run: make install`
       - name: my_repo
         uses: actions/checkout@v1
+      - name: npm install
+        run: make install`
       - name: eslint
         run: make lint
