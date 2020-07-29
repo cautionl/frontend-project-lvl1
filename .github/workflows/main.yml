@@ -15,5 +15,7 @@ jobs:
   eslint:
     runs-on: ubuntu-latest
     steps:
+      - name: my_repo
+        uses: actions/checkout@v1
       - name: eslint
-        run: ls -la
+        run: make lint
