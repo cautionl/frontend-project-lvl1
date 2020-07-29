@@ -19,7 +19,9 @@ jobs:
         uses: actions/checkout@v1
       - name: Use Node.js
         uses: actions/setup-node@v1
-      - name: npm install, build
+      - name: npm install
         run: make install
+      - name: install_eslint
+        run: make install eslint eslint-config-airbnb-base eslint-plugin-import
       - name: eslint
         run: make lint
