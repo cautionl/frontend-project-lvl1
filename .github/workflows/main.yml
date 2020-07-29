@@ -16,4 +16,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: eslint
-        run: make lint
+        run: ls -la
