@@ -22,6 +22,6 @@ jobs:
       - name: npm install
         run: make install
       - name: install_eslint
-        run: make install eslint eslint-config-airbnb-base eslint-plugin-import
+        run: npm install eslint eslint-config-airbnb-base eslint-plugin-import
       - name: eslint
         run: make lint
