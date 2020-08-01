@@ -1,14 +1,9 @@
 /* eslint-disable import/prefer-default-export */
 import {
-  randomNum, currentAnswer, getAnswer, congratulation,
+  randomNum, currentAnswer, getAnswer, congratulation, arrayRandElement,
 } from '../src/index.js';
 
 const arrSymbol = ['+', '-', '*'];
-
-const arrayRandElement = (arr = []) => {
-  const rand = Math.floor(Math.random() * arr.length);
-  return arrSymbol[rand];
-};
 
 const calc = () => {
   for (let i = 0; i < 3; i += 1) {

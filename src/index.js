@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable import/no-mutable-exports */
 import readlineSync from 'readline-sync';
 
@@ -27,6 +28,26 @@ const getAnswer = (value, answer, fuc) => {
   }
 };
 
+const greatestCommonDivisor = (one, two) => {
+  let minVal = 0;
+  const arrVal = [];
+  if (one > two) {
+    minVal = two;
+  } else minVal = one;
+  for (let i = 0; i <= minVal; i += 1) {
+    if (one % i === 0 && two % i === 0) {
+      arrVal.push(i);
+    }
+  }
+  return arrVal.pop();
+};
+
+const arrayRandElement = (arr = []) => {
+  const rand = Math.floor(Math.random() * arr.length);
+  return arr[rand];
+};
+
 export {
-  userName, greeting, randomNum, currentAnswer, getAnswer, congratulation,
+  userName, greeting, randomNum, currentAnswer, getAnswer, congratulation, greatestCommonDivisor,
+  arrayRandElement,
 };
