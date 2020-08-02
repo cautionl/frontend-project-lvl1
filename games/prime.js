@@ -1,21 +1,13 @@
-/* eslint-disable import/prefer-default-export */
 import {
-  userName, randomNum, currentAnswer, getAnswer, congratulation, invertedAns, Ans,
+  userName, randomNum, currentAnswer, getAnswer, congratulation, isPrime, invertedAns, Ans,
 } from '../src/index.js';
 
-const isEven = (num) => {
-  if (num % 2 === 0) {
-    return true;
-  }
-  return false;
-};
-
-const checkingResponses = () => {
+const prime = () => {
   for (let i = 0; i < 3; i += 1) {
     const ranNum = randomNum(100);
     console.log(`Question: ${ranNum}`);
     const answer = currentAnswer();
-    const even = isEven(ranNum);
+    const even = isPrime(ranNum);
     const trueNum = (even === true && answer === 'yes');
     const falseNum = (even === false && answer === 'no');
     const strange = (answer !== 'yes' && answer !== 'no');
@@ -31,4 +23,4 @@ const checkingResponses = () => {
   console.log(congratulation);
 };
 
-export { checkingResponses };
+export { prime };

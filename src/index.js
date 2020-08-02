@@ -69,7 +69,23 @@ const arrayOfUnknown = (arr, index) => {
   return result.join(' ');
 };
 
+const isPrime = (number) => {
+  if (number < 2) {
+    return false;
+  }
+  for (let i = 2; i <= number / 2; i += 1) {
+    if (number % i === 0) {
+      return false;
+    }
+  }
+  return true;
+};
+
+const invertedAns = (answer = '') => (answer !== 'yes' ? 'yes' : 'no');
+
+const Ans = (even) => (even === true ? 'yes' : 'no');
+
 export {
   userName, greeting, randomNum, currentAnswer, getAnswer, congratulation, greatestCommonDivisor,
-  arrayRandElement, getArrayProgressions, arrayOfUnknown,
+  arrayRandElement, getArrayProgressions, arrayOfUnknown, isPrime, invertedAns, Ans,
 };
