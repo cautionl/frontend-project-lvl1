@@ -4,8 +4,8 @@ import {
 
 const gcd = () => {
   for (let i = 0; i < 3; i += 1) {
-    const oneNum = randomNum();
-    const twoNum = randomNum();
+    const oneNum = randomNum(100);
+    const twoNum = randomNum(100);
     console.log(`${oneNum} ${twoNum}`);
     const currentAns = Number(currentAnswer());
     const answerFuc = greatestCommonDivisor(oneNum, twoNum);

@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/no-mutable-exports */
 import readlineSync from 'readline-sync';
@@ -13,7 +14,7 @@ const greeting = () => {
   console.log(`Hi ${userName}!`);
 };
 
-const randomNum = () => (Math.floor(Math.random() * 100));
+const randomNum = (n) => (Math.floor(Math.random() * n));
 
 const currentAnswer = () => {
   const answer = readlineSync.question('Your answer:');
@@ -47,7 +48,28 @@ const arrayRandElement = (arr = []) => {
   return arr[rand];
 };
 
+const getArrayProgressions = (n) => {
+  const arr = [randomNum(100)];
+  const value = randomNum(10);
+  for (let i = 0; i < n - 1; i += 1) {
+    arr.push(arr[i] + value);
+  }
+  return arr;
+};
+
+const arrayOfUnknown = (arr, index) => {
+  const result = [];
+  for (let i = 0; i < arr.length; i += 1) {
+    result.push(arr[i]);
+    if (i === index) {
+      result.pop();
+      result.push('..');
+    }
+  }
+  return result.join(' ');
+};
+
 export {
   userName, greeting, randomNum, currentAnswer, getAnswer, congratulation, greatestCommonDivisor,
-  arrayRandElement,
+  arrayRandElement, getArrayProgressions, arrayOfUnknown,
 };

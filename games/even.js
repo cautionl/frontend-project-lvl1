@@ -16,7 +16,7 @@ const Ans = (even) => (even === true ? 'yes' : 'no');
 
 const checkingResponses = () => {
   for (let i = 0; i < 3; i += 1) {
-    const ranNum = randomNum();
+    const ranNum = randomNum(100);
     console.log(`Question: ${ranNum}`);
     const answer = currentAnswer();
     const even = isEven(ranNum);

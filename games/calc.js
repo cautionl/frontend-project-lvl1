@@ -7,7 +7,7 @@ const arrSymbol = ['+', '-', '*'];
 
 const calc = () => {
   for (let i = 0; i < 3; i += 1) {
-    const currentStr = `${randomNum()}${arrayRandElement(arrSymbol)}${randomNum()}`;
+    const currentStr = `${randomNum(100)}${arrayRandElement(arrSymbol)}${randomNum(100)}`;
     console.log(currentStr);
     const currentAns = Number(currentAnswer());
     // eslint-disable-next-line no-eval
