@@ -1,33 +1,6 @@
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable no-unused-vars */
-/* eslint-disable import/no-mutable-exports */
 import readlineSync from 'readline-sync';
 
-// eslint-disable-next-line import/no-mutable-exports
-let userName = '';
-let congratulation = '';
-
-const greeting = () => {
-  console.log('Welcome to the Brain Games!');
-  userName = readlineSync.question('May I have your name? ');
-  congratulation = `Congratulations, ${userName}!`;
-  console.log(`Hi ${userName}!`);
-};
-
 const randomNum = (n) => (Math.floor(Math.random() * n));
-
-const currentAnswer = () => {
-  const answer = readlineSync.question('Your answer:');
-  return answer;
-};
-
-const getAnswer = (value, answer, fuc) => {
-  if (value) {
-    console.log('Correct!');
-  } else {
-    console.log(`"${answer}" is wrong answer ;(. Correct answer was "${fuc}".\nLets try again, ${userName}!`);
-  }
-};
 
 const greatestCommonDivisor = (one, two) => {
   let minVal = 0;
@@ -81,11 +54,26 @@ const isPrime = (number) => {
   return true;
 };
 
-const invertedAns = (answer = '') => (answer !== 'yes' ? 'yes' : 'no');
-
-const Ans = (even) => (even === true ? 'yes' : 'no');
+const engine = (arr, str) => {
+  console.log('Welcome to the Brain Games!');
+  const userName = readlineSync.question('May I have your name? ');
+  console.log(`Hi ${userName}!`);
+  const trueArr = arr;
+  console.log(str);
+  for (let i = 0; i < trueArr.length; i += 1) {
+    console.log(trueArr[i][0]);
+    const currentAnswer = readlineSync.question('Your answer:');
+    if (trueArr[i][1] === currentAnswer) {
+      console.log('Correct!');
+    } else {
+      console.log(`"${currentAnswer}" is wrong answer ;(. Correct answer was "${trueArr[i][1]}".\nLets try again, ${userName}!`);
+      return;
+    }
+  }
+  console.log(`Congratulations, ${userName}!`);
+};
 
 export {
-  userName, greeting, randomNum, currentAnswer, getAnswer, congratulation, greatestCommonDivisor,
-  arrayRandElement, getArrayProgressions, arrayOfUnknown, isPrime, invertedAns, Ans,
+  randomNum, greatestCommonDivisor, arrayRandElement, getArrayProgressions,
+  arrayOfUnknown, isPrime, engine,
 };
