@@ -1,16 +1,20 @@
-import { randomNum, greatestCommonDivisor, engine } from '../index.js';
+import { randomNum, greatestCommonDivisor, runEngine } from '../index.js';
 
-const gcd = () => {
-  const result = [];
-  for (let i = 0; i < 3; i += 1) {
-    const oneNum = randomNum(100);
-    const twoNum = randomNum(100);
-    const answerFuc = String(greatestCommonDivisor(oneNum, twoNum));
-    const currentArr = [`${oneNum} ${twoNum}`, answerFuc];
-    result.push(currentArr);
-  }
-  const question = 'Find the greatest common divisor of given numbers.';
-  return engine(result, question);
+const dataAcquisition = (result = []) => {
+  const oneNum = randomNum(100);
+  const twoNum = randomNum(100);
+  const answerFuc = String(greatestCommonDivisor(oneNum, twoNum));
+  const currentArr = [`${oneNum} ${twoNum}`, answerFuc];
+  result.push(currentArr);
 };
 
-export default gcd;
+const runGcd = () => {
+  const result = [];
+  for (let i = 0; i < 3; i += 1) {
+    dataAcquisition(result);
+  }
+  const description = 'Find the greatest common divisor of given numbers.';
+  return runEngine(result, description);
+};
+
+export default runGcd;

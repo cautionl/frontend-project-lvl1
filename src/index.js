@@ -54,7 +54,7 @@ const isPrime = (number) => {
   return true;
 };
 
-const engine = (arr, str) => {
+const runEngine = (arr, str) => {
   console.log('Welcome to the Brain Games!');
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hi ${userName}!`);
@@ -75,5 +75,5 @@ const engine = (arr, str) => {
 
 export {
   randomNum, greatestCommonDivisor, arrayRandElement, getArrayProgressions,
-  arrayOfUnknown, isPrime, engine,
+  arrayOfUnknown, isPrime, runEngine,
 };
