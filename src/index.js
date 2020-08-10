@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 import readlineSync from 'readline-sync';
 
 const randomNum = (n) => (Math.floor(Math.random() * n));
@@ -60,13 +61,13 @@ const runEngine = (arr, str) => {
   console.log(`Hi ${userName}!`);
   const trueArr = arr;
   console.log(str);
-  for (let i = 0; i < trueArr.length; i += 1) {
-    console.log(trueArr[i][0]);
+  for (const answer of trueArr) {
+    console.log(answer[0]);
     const currentAnswer = readlineSync.question('Your answer:');
-    if (trueArr[i][1] === currentAnswer) {
+    if (answer[1] === currentAnswer) {
       console.log('Correct!');
     } else {
-      console.log(`"${currentAnswer}" is wrong answer ;(. Correct answer was "${trueArr[i][1]}".\nLets try again, ${userName}!`);
+      console.log(`"${currentAnswer}" is wrong answer ;(. Correct answer was "${answer[1]}".\nLets try again, ${userName}!`);
       return;
     }
   }
