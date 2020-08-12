@@ -1,31 +1,27 @@
-import { randomNum, runEngine } from '../index.js';
+import runEngine from '../index.js';
+import randomNum from '../utils.js';
 
-const isEven = (num) => {
-  if (num % 2 === 0) {
-    return true;
-  }
-  return false;
-};
+const description = 'Answer "yes" if the number is even, otherwise answer "no".\n';
 
-const dataAcquisition = (result = []) => {
-  const ranNum = randomNum(100);
-  const even = isEven(ranNum);
-  let currentArr = [];
+const isEven = (num) => (num % 2 === 0);
+
+const acquisitionData = (result = []) => {
+  const number = randomNum(100);
+  const even = isEven(number);
+  const data = [number];
   if (even) {
-    currentArr = [ranNum, 'yes'];
-    result.push(currentArr);
-  } if (!even) {
-    currentArr = [ranNum, 'no'];
-    result.push(currentArr);
+    data.push('yes');
+  } else {
+    data.push('no');
   }
+  result.push(data);
 };
 
 const runEven = () => {
   const result = [];
   for (let i = 0; i < 3; i += 1) {
-    dataAcquisition(result);
+    acquisitionData(result);
   }
-  const description = 'Answer "yes" if the number is even, otherwise answer "no".\n';
   return runEngine(result, description);
 };
 

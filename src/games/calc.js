@@ -1,31 +1,43 @@
-import { randomNum, arrayRandElement, runEngine } from '../index.js';
+import runEngine from '../index.js';
+import randomNum from '../utils.js';
 
-const arrSymbol = ['+', '-', '*'];
+const description = 'What is the result of the expression?\n';
+const mathematicalSigns = ['+', '-', '*'];
 
-const dataAcquisition = (arr = []) => {
-  let currentArr = [];
-  const oneNum = randomNum(100);
-  const twoNum = randomNum(100);
-  const currentSym = arrayRandElement(arrSymbol);
-  const currentStr = `${oneNum}${currentSym}${twoNum}`;
-  if (currentSym === '-') {
-    currentArr = [currentStr, String(oneNum - twoNum)];
-    arr.push(currentArr);
-  } if (currentSym === '+') {
-    currentArr = [currentStr, String(oneNum + twoNum)];
-    arr.push(currentArr);
-  } if (currentSym === '*') {
-    currentArr = [currentStr, String(oneNum * twoNum)];
-    arr.push(currentArr);
+const arrayRandElement = (arr = []) => {
+  const rand = Math.floor(Math.random() * arr.length);
+  return arr[rand];
+};
+
+const figuringOutMathOperations = (firstNum, secondNum, currentMathSingn) => {
+  switch (currentMathSingn) {
+    case '-':
+      return String(firstNum - secondNum);
+    case '+':
+      return String(firstNum + secondNum);
+    case '*':
+      return String(firstNum * secondNum);
+    default:
+      return undefined;
   }
+};
+
+const acquisitionData = (arr = []) => {
+  let currentArr = [];
+  const firstNum = randomNum(100);
+  const secondNum = randomNum(100);
+  const currentMathSingn = arrayRandElement(mathematicalSigns);
+  const question = `${firstNum}${currentMathSingn}${secondNum}`;
+  const resultMathOperation = figuringOutMathOperations(firstNum, secondNum, currentMathSingn);
+  currentArr = [question, resultMathOperation];
+  arr.push(currentArr);
 };
 
 const runCalc = () => {
   const result = [];
   for (let i = 0; i < 3; i += 1) {
-    dataAcquisition(result);
+    acquisitionData(result);
   }
-  const description = 'What is the result of the expression?\n';
   return runEngine(result, description);
 };
 
