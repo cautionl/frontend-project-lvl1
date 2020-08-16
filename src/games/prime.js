@@ -15,22 +15,22 @@ const isPrime = (number) => {
   return true;
 };
 
-const acquisitionData = (result = []) => {
+const generatingRound = () => {
   const number = randomNum(100);
   const even = isPrime(number);
-  const data = [number];
+  const dataOfRound = [number];
   if (even) {
-    data.push('yes');
+    dataOfRound.push('yes');
   } else {
-    data.push('no');
+    dataOfRound.push('no');
   }
-  result.push(data);
+  return dataOfRound;
 };
 
 const runPrime = () => {
   const result = [];
   for (let i = 0; i < 3; i += 1) {
-    acquisitionData(result);
+    result.push(generatingRound());
   }
   return runEngine(result, description);
 };

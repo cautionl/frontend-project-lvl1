@@ -24,19 +24,19 @@ const getArrayProgressions = (n) => {
   return arr;
 };
 
-const acquisitionData = (result = []) => {
+const generatingRound = () => {
   const arr = getArrayProgressions(10);
   const indexArr = randomNum(arr.length - 1);
   const arrOutput = arrayOfUnknown(arr, indexArr);
-  const valueArrIndex = String(arr[indexArr]);
-  const data = [arrOutput, valueArrIndex];
-  result.push(data);
+  const correctAnswer = String(arr[indexArr]);
+  const dataOfRound = [arrOutput, correctAnswer];
+  return dataOfRound;
 };
 
 const runProgression = () => {
   const result = [];
   for (let i = 0; i < 3; i += 1) {
-    acquisitionData(result);
+    result.push(generatingRound());
   }
   return runEngine(result, description);
 };

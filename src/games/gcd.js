@@ -17,18 +17,18 @@ const greatestCommonDivisor = (firstNum, secondNum) => {
   return arrVal.pop();
 };
 
-const acquisitionData = (result = []) => {
+const generatingRound = () => {
   const firstNum = randomNum(100);
   const secondNum = randomNum(100);
-  const answerFuc = String(greatestCommonDivisor(firstNum, secondNum));
-  const data = [`${firstNum} ${secondNum}`, answerFuc];
-  return result.push(data);
+  const correctAnswer = String(greatestCommonDivisor(firstNum, secondNum));
+  const dataOfRound = [`${firstNum} ${secondNum}`, correctAnswer];
+  return dataOfRound;
 };
 
 const runGcd = () => {
   const result = [];
   for (let i = 0; i < 3; i += 1) {
-    acquisitionData(result);
+    result.push(generatingRound());
   }
   return runEngine(result, description);
 };

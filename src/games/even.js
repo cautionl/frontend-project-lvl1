@@ -5,22 +5,22 @@ const description = 'Answer "yes" if the number is even, otherwise answer "no".\
 
 const isEven = (num) => (num % 2 === 0);
 
-const acquisitionData = (result = []) => {
+const generatingRound = () => {
   const number = randomNum(100);
   const even = isEven(number);
-  const data = [number];
+  const dataOfround = [number];
   if (even) {
-    data.push('yes');
+    dataOfround.push('yes');
   } else {
-    data.push('no');
+    dataOfround.push('no');
   }
-  result.push(data);
+  return dataOfround;
 };
 
 const runEven = () => {
   const result = [];
   for (let i = 0; i < 3; i += 1) {
-    acquisitionData(result);
+    result.push(generatingRound());
   }
   return runEngine(result, description);
 };
