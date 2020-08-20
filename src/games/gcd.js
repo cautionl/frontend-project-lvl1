@@ -1,34 +1,29 @@
 import runEngine from '../index.js';
-import randomNum from '../utils.js';
+import generateRandomNumber from '../utils.js';
 
 const description = 'Find the greatest common divisor of given numbers.';
 
 const greatestCommonDivisor = (firstNum, secondNum) => {
-  let minVal = 0;
-  const arrVal = [];
-  if (firstNum > secondNum) {
-    minVal = secondNum;
-  } else minVal = firstNum;
-  for (let i = 0; i <= minVal; i += 1) {
-    if (firstNum % i === 0 && secondNum % i === 0) {
-      arrVal.push(i);
-    }
+  if (secondNum > firstNum) {
+    return greatestCommonDivisor(secondNum, firstNum);
   }
-  return arrVal.pop();
+  if (!secondNum) {
+    return firstNum;
+  }
+  return greatestCommonDivisor(secondNum, firstNum % secondNum);
 };
 
-const generatingRound = () => {
-  const firstNum = randomNum(100);
-  const secondNum = randomNum(100);
+const generateRound = () => {
+  const firstNum = generateRandomNumber(0, 100);
+  const secondNum = generateRandomNumber(0, 100);
   const correctAnswer = String(greatestCommonDivisor(firstNum, secondNum));
-  const dataOfRound = [`${firstNum} ${secondNum}`, correctAnswer];
-  return dataOfRound;
+  return [`${firstNum} ${secondNum}`, correctAnswer];
 };
 
 const runGcd = () => {
   const result = [];
   for (let i = 0; i < 3; i += 1) {
-    result.push(generatingRound());
+    result.push(generateRound());
   }
   return runEngine(result, description);
 };

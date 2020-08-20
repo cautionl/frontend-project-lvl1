@@ -1,42 +1,41 @@
 import runEngine from '../index.js';
-import randomNum from '../utils.js';
+import generateRandomNumber from '../utils.js';
 
 const description = 'What number is missing in the progression?';
 
-const arrayOfUnknown = (arr, index) => {
+const createArrayUnknown = (arr, index) => {
   const result = [];
   for (let i = 0; i < arr.length; i += 1) {
-    result.push(arr[i]);
     if (i === index) {
-      result.pop();
       result.push('..');
+    } else {
+      result.push(arr[i]);
     }
   }
   return result.join(' ');
 };
 
-const getArrayProgressions = (n) => {
-  const arr = [randomNum(100)];
-  const number = randomNum(10);
+const creatingProgression = (n) => {
+  const arr = [generateRandomNumber(0, 100)];
+  const number = generateRandomNumber(0, 10);
   for (let i = 0; i < n - 1; i += 1) {
     arr.push(arr[i] + number);
   }
   return arr;
 };
 
-const generatingRound = () => {
-  const arr = getArrayProgressions(10);
-  const indexArr = randomNum(arr.length - 1);
-  const arrOutput = arrayOfUnknown(arr, indexArr);
+const generateRound = () => {
+  const arr = creatingProgression(10);
+  const indexArr = generateRandomNumber(0, arr.length - 1);
+  const question = createArrayUnknown(arr, indexArr);
   const correctAnswer = String(arr[indexArr]);
-  const dataOfRound = [arrOutput, correctAnswer];
-  return dataOfRound;
+  return [question, correctAnswer];
 };
 
 const runProgression = () => {
   const result = [];
   for (let i = 0; i < 3; i += 1) {
-    result.push(generatingRound());
+    result.push(generateRound());
   }
   return runEngine(result, description);
 };

@@ -1,16 +1,11 @@
 import runEngine from '../index.js';
-import randomNum from '../utils.js';
+import generateRandomNumber from '../utils.js';
 
 const description = 'What is the result of the expression?\n';
-const mathematicalSigns = ['+', '-', '*'];
+const operators = ['+', '-', '*'];
 
-const getArrayRandElement = (arr = []) => {
-  const rand = Math.floor(Math.random() * arr.length);
-  return arr[rand];
-};
-
-const calculate = (currentMathSingn, firstNum, secondNum) => {
-  switch (currentMathSingn) {
+const calculate = (operator, firstNum, secondNum) => {
+  switch (operator) {
     case '-':
       return String(firstNum - secondNum);
     case '+':
@@ -22,21 +17,19 @@ const calculate = (currentMathSingn, firstNum, secondNum) => {
   }
 };
 
-const generatingRound = () => {
-  let dataOfRound = [];
-  const firstNum = randomNum(100);
-  const secondNum = randomNum(100);
-  const currentMathSingn = getArrayRandElement(mathematicalSigns);
-  const question = `${firstNum}${currentMathSingn}${secondNum}`;
-  const correctAnswer = calculate(currentMathSingn, firstNum, secondNum);
-  dataOfRound = [question, correctAnswer];
-  return dataOfRound;
+const generateRound = () => {
+  const firstNum = generateRandomNumber(0, 100);
+  const secondNum = generateRandomNumber(0, 100);
+  const operator = operators[generateRandomNumber(0, operators.length - 1)];
+  const question = `${firstNum}${operator}${secondNum}`;
+  const correctAnswer = calculate(operator, firstNum, secondNum);
+  return [question, correctAnswer];
 };
 
 const runCalc = () => {
   const result = [];
   for (let i = 0; i < 3; i += 1) {
-    result.push(generatingRound());
+    result.push(generateRound());
   }
   return runEngine(result, description);
 };

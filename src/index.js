@@ -12,7 +12,8 @@ const runEngine = (dataForRounds, description) => {
     if (answer === currentAnswer) {
       console.log('Correct!');
     } else {
-      console.log(`"${currentAnswer}" is wrong answer ;(. Correct answer was "${answer}".\nLets try again, ${userName}!`);
+      console.log(`"${currentAnswer}" is wrong answer ;(. Correct answer was "${answer}".`);
+      console.log(`Lets try again, ${userName}!`);
       return;
     }
   }
