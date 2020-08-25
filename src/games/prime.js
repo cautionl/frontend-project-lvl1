@@ -1,5 +1,5 @@
 import runEngine from '../index.js';
-import generateRandomNumber from '../utils.js';
+import { generateRandomNumber } from '../utils.js';
 
 const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
@@ -15,17 +15,10 @@ const isPrime = (number) => {
   return true;
 };
 
-const getAnswer = (number, even) => {
-  if (even) {
-    return [number, 'yes'];
-  }
-  return [number, 'no'];
-};
-
 const generateRound = () => {
-  const number = generateRandomNumber(0, 100);
-  const even = isPrime(number);
-  return getAnswer(number, even);
+  const question = generateRandomNumber(1, 20);
+  const answer = isPrime(question) ? 'yes' : 'no';
+  return [question, answer];
 };
 
 const runPrime = () => {

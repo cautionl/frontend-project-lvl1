@@ -1,21 +1,14 @@
 import runEngine from '../index.js';
-import generateRandomNumber from '../utils.js';
+import { generateRandomNumber } from '../utils.js';
 
-const description = 'Answer "yes" if the number is even, otherwise answer "no".\n';
+const description = 'Answer "yes" if the number is even, otherwise answer "no".';
 
 const isEven = (num) => (num % 2 === 0);
 
-const getAnswer = (number, even) => {
-  if (even) {
-    return [number, 'yes'];
-  }
-  return [number, 'no'];
-};
-
 const generateRound = () => {
-  const number = generateRandomNumber(0, 100);
-  const even = isEven(number);
-  return getAnswer(number, even);
+  const question = generateRandomNumber(1, 20);
+  const answer = isEven(question) ? 'yes' : 'no';
+  return [question, answer];
 };
 
 const runEven = () => {

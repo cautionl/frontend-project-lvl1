@@ -1,9 +1,10 @@
 import runEngine from '../index.js';
-import generateRandomNumber from '../utils.js';
+import { generateRandomNumber } from '../utils.js';
 
-const description = 'What is the result of the expression?\n';
+const description = 'What is the result of the expression?';
 const operators = ['+', '-', '*'];
 
+// eslint-disable-next-line consistent-return
 const calculate = (operator, firstNum, secondNum) => {
   switch (operator) {
     case '-':
@@ -18,10 +19,11 @@ const calculate = (operator, firstNum, secondNum) => {
 };
 
 const generateRound = () => {
-  const firstNum = generateRandomNumber(0, 100);
-  const secondNum = generateRandomNumber(0, 100);
-  const operator = operators[generateRandomNumber(0, operators.length - 1)];
-  const question = `${firstNum}${operator}${secondNum}`;
+  const firstNum = generateRandomNumber(1, 20);
+  const secondNum = generateRandomNumber(1, 20);
+  const randomArrayIndex = generateRandomNumber(0, operators.length - 1);
+  const operator = operators[randomArrayIndex];
+  const question = `${firstNum} ${operator} ${secondNum}`;
   const correctAnswer = calculate(operator, firstNum, secondNum);
   return [question, correctAnswer];
 };
