@@ -1,5 +1,5 @@
-import runEngine from '../index.js';
-import { generateRandomNumber } from '../utils.js';
+import { roundsCount, runEngine } from '../index.js';
+import { generateNumber } from '../utils.js';
 
 const description = 'What is the result of the expression?';
 const operators = ['+', '-', '*'];
@@ -8,29 +8,29 @@ const operators = ['+', '-', '*'];
 const calculate = (operator, firstNum, secondNum) => {
   switch (operator) {
     case '-':
-      return String(firstNum - secondNum);
+      return firstNum - secondNum;
     case '+':
-      return String(firstNum + secondNum);
+      return firstNum + secondNum;
     case '*':
-      return String(firstNum * secondNum);
+      return firstNum * secondNum;
     default:
       break;
   }
 };
 
 const generateRound = () => {
-  const firstNum = generateRandomNumber(1, 20);
-  const secondNum = generateRandomNumber(1, 20);
-  const randomArrayIndex = generateRandomNumber(0, operators.length - 1);
-  const operator = operators[randomArrayIndex];
+  const firstNum = generateNumber(1, 20);
+  const secondNum = generateNumber(1, 20);
+  const operatorIndex = generateNumber(0, operators.length - 1);
+  const operator = operators[operatorIndex];
   const question = `${firstNum} ${operator} ${secondNum}`;
-  const correctAnswer = calculate(operator, firstNum, secondNum);
+  const correctAnswer = String(calculate(operator, firstNum, secondNum));
   return [question, correctAnswer];
 };
 
 const runCalc = () => {
   const result = [];
-  for (let i = 0; i < 3; i += 1) {
+  for (let i = 0; i < roundsCount; i += 1) {
     result.push(generateRound());
   }
   return runEngine(result, description);

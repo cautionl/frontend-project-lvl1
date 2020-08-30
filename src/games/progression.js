@@ -1,7 +1,8 @@
-import runEngine from '../index.js';
-import { generateRandomNumber } from '../utils.js';
+import { roundsCount, runEngine } from '../index.js';
+import { generateNumber } from '../utils.js';
 
 const description = 'What number is missing in the progression?';
+const lengthProgression = 9;
 
 const getQuestion = (arr, index) => {
   const result = [];
@@ -16,17 +17,17 @@ const getQuestion = (arr, index) => {
 };
 
 const generateProgression = (arr, number) => {
-  for (let i = 0; i < 9; i += 1) {
+  for (let i = 0; i < lengthProgression; i += 1) {
     arr.push(arr[i] + number);
   }
   return arr;
 };
 
 const generateRound = () => {
-  const firstElementProgression = [generateRandomNumber(1, 20)];
-  const progressionStep = generateRandomNumber(1, 20);
+  const firstElementProgression = [generateNumber(1, 20)];
+  const progressionStep = generateNumber(1, 20);
   const progression = generateProgression(firstElementProgression, progressionStep);
-  const indexArr = generateRandomNumber(0, progression.length - 1);
+  const indexArr = generateNumber(0, progression.length - 1);
   const question = getQuestion(progression, indexArr);
   const answer = String(progression[indexArr]);
   return [question, answer];
@@ -34,7 +35,7 @@ const generateRound = () => {
 
 const runProgression = () => {
   const result = [];
-  for (let i = 0; i < 3; i += 1) {
+  for (let i = 0; i < roundsCount; i += 1) {
     result.push(generateRound());
   }
   return runEngine(result, description);

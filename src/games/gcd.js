@@ -1,5 +1,5 @@
-import runEngine from '../index.js';
-import { generateRandomNumber } from '../utils.js';
+import { roundsCount, runEngine } from '../index.js';
+import { generateNumber } from '../utils.js';
 
 const description = 'Find the greatest common divisor of given numbers.';
 
@@ -10,8 +10,8 @@ const greatestCommonDivisor = (firstNum, secondNum) => {
 };
 
 const generateRound = () => {
-  const firstNum = generateRandomNumber(1, 20);
-  const secondNum = generateRandomNumber(1, 20);
+  const firstNum = generateNumber(1, 20);
+  const secondNum = generateNumber(1, 20);
   const question = `${firstNum} ${secondNum}`;
   const answer = String(greatestCommonDivisor(firstNum, secondNum));
   return [question, answer];
@@ -19,7 +19,7 @@ const generateRound = () => {
 
 const runGcd = () => {
   const result = [];
-  for (let i = 0; i < 3; i += 1) {
+  for (let i = 0; i < roundsCount; i += 1) {
     result.push(generateRound());
   }
   return runEngine(result, description);
