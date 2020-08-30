@@ -16,17 +16,18 @@ const getQuestion = (arr, index) => {
   return result.join(' ');
 };
 
-const generateProgression = (arr, number) => {
+const generateProgression = (firstElement, step) => {
+  const progression = [firstElement];
   for (let i = 0; i < lengthProgression; i += 1) {
-    arr.push(arr[i] + number);
+    progression.push(progression[i] + step);
   }
-  return arr;
+  return progression;
 };
 
 const generateRound = () => {
-  const firstElementProgression = [generateNumber(1, 20)];
-  const progressionStep = generateNumber(1, 20);
-  const progression = generateProgression(firstElementProgression, progressionStep);
+  const firstElement = generateNumber(1, 20);
+  const step = generateNumber(1, 20);
+  const progression = generateProgression(firstElement, step);
   const indexArr = generateNumber(0, progression.length - 1);
   const question = getQuestion(progression, indexArr);
   const answer = String(progression[indexArr]);
