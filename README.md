@@ -4,7 +4,7 @@
 
 ## Install:
 ```
-npm install brain-games
+npm install -g brain-games
 ```
 
 ## Even:

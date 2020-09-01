@@ -2,7 +2,7 @@ import { roundsCount, runEngine } from '../index.js';
 import { generateNumber } from '../utils.js';
 
 const description = 'What number is missing in the progression?';
-const lengthProgression = 9;
+const progressionLength = 10;
 
 const getQuestion = (arr, index) => {
   const result = [];
@@ -17,9 +17,9 @@ const getQuestion = (arr, index) => {
 };
 
 const generateProgression = (firstElement, step) => {
-  const progression = [firstElement];
-  for (let i = 0; i < lengthProgression; i += 1) {
-    progression.push(progression[i] + step);
+  const progression = [];
+  for (let i = 0; i <= progressionLength; i += 1) {
+    progression.push(firstElement + i * step);
   }
   return progression;
 };
