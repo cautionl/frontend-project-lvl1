@@ -5,7 +5,7 @@ const description = 'Answer "yes" if the number is even, otherwise answer "no".'
 
 const isEven = (num) => num % 2 === 0;
 
-const generateRound = () => {
+const generateRoundData = () => {
   const question = generateNumber(1, 20);
   const answer = isEven(question) ? 'yes' : 'no';
   return [question, answer];
@@ -14,7 +14,7 @@ const generateRound = () => {
 const runEven = () => {
   const result = [];
   for (let i = 0; i < roundsCount; i += 1) {
-    result.push(generateRound());
+    result.push(generateRoundData());
   }
   return runEngine(result, description);
 };

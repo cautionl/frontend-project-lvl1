@@ -5,14 +5,8 @@ const description = 'What number is missing in the progression?';
 const progressionLength = 10;
 
 const getQuestion = (arr, index) => {
-  const result = [];
-  for (let i = 0; i < arr.length; i += 1) {
-    if (i === index) {
-      result.push('..');
-    } else {
-      result.push(arr[i]);
-    }
-  }
+  const result = arr.slice();
+  result[index] = '..';
   return result.join(' ');
 };
 
@@ -24,7 +18,7 @@ const generateProgression = (firstElement, step) => {
   return progression;
 };
 
-const generateRound = () => {
+const generateRoundData = () => {
   const firstElement = generateNumber(1, 20);
   const step = generateNumber(1, 20);
   const progression = generateProgression(firstElement, step);
@@ -37,7 +31,7 @@ const generateRound = () => {
 const runProgression = () => {
   const result = [];
   for (let i = 0; i < roundsCount; i += 1) {
-    result.push(generateRound());
+    result.push(generateRoundData());
   }
   return runEngine(result, description);
 };

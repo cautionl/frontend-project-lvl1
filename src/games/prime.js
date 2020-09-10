@@ -15,7 +15,7 @@ const isPrime = (number) => {
   return true;
 };
 
-const generateRound = () => {
+const generateRoundData = () => {
   const question = generateNumber(1, 20);
   const answer = isPrime(question) ? 'yes' : 'no';
   return [question, answer];
@@ -24,7 +24,7 @@ const generateRound = () => {
 const runPrime = () => {
   const result = [];
   for (let i = 0; i < roundsCount; i += 1) {
-    result.push(generateRound());
+    result.push(generateRoundData());
   }
   return runEngine(result, description);
 };

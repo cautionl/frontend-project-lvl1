@@ -18,7 +18,7 @@ const calculate = (operator, firstNum, secondNum) => {
   }
 };
 
-const generateRound = () => {
+const generateRoundData = () => {
   const firstNum = generateNumber(1, 20);
   const secondNum = generateNumber(1, 20);
   const operatorIndex = generateNumber(0, operators.length - 1);
@@ -31,7 +31,7 @@ const generateRound = () => {
 const runCalc = () => {
   const result = [];
   for (let i = 0; i < roundsCount; i += 1) {
-    result.push(generateRound());
+    result.push(generateRoundData());
   }
   return runEngine(result, description);
 };
